@@ -1,5 +1,4 @@
 // use access for connection
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -68,6 +67,7 @@ class sagar extends JFrame implements ActionListener
 		prev.addActionListener(this);
 		save.addActionListener(this);
 		cancal.addActionListener(this);
+		//ct.addAddListener(this);
 	
 		con.add(title_panel,BorderLayout.NORTH);
 		con.add(info_panel,BorderLayout.CENTER);
@@ -120,7 +120,7 @@ class sagar extends JFrame implements ActionListener
 		{
 			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
 			Connection con = DriverManager.getConnection("jdbc:odbc:dsn");
-			PreparedStatement ps = con.prepareStatement("insert into info_ values("+Integer.parseInt(no.getText())+",'"+name.getText()+"','"+String.valueOf(ct.getSelectedItem())+"','"+phno.getText()+"')");
+			PreparedStatement ps = con.prepareStatement("insert into info_ values("+Integer.parseInt(no.getText())+",'"+name.getText()+"','"+String.valueOf(ct.getSelectedIndex())+"','"+phno.getText()+"')");
 			/*ps.setInt(1,Integer.parseInt(no.getText()));
 			ps.setString(2,name.getText());
 			ps.setString(3,String.valueOf(ct.getSelectedItem()));
@@ -148,7 +148,7 @@ class sagar extends JFrame implements ActionListener
 				
 			no.setText(String.valueOf(rs.getInt(1)));
 			name.setText(rs.getString(2));
-			//ct.setText(rs.getString(3));
+			ct.setSelectedIndex(Integer.parseInt(rs.getString(3)));
 			phno.setText(rs.getString(4));
 		
 			rs.close();
@@ -173,7 +173,7 @@ class sagar extends JFrame implements ActionListener
 				
 			no.setText(String.valueOf(rs.getInt(1)));
 			name.setText(rs.getString(2));
-			//ct.setText(rs.getString(3));
+			ct.setSelectedIndex(Integer.parseInt(rs.getString(3)));
 			phno.setText(rs.getString(4));
 		
 			rs.close();
@@ -207,7 +207,7 @@ class sagar extends JFrame implements ActionListener
 
 			no.setText(String.valueOf(rs.getInt(1)));
 			name.setText(rs.getString(2));
-			//ct.setText(rs.getString(3));
+			ct.setSelectedIndex(Integer.parseInt(rs.getString(3)));
 			phno.setText(rs.getString(4));
 						
 			rs.close();
@@ -241,7 +241,7 @@ class sagar extends JFrame implements ActionListener
 	
 			no.setText(String.valueOf(rs.getInt(1)));
 			name.setText(rs.getString(2));
-			//ct.setText(rs.getString(3));
+			ct.setSelectedIndex(Integer.parseInt(rs.getString(3)));
 			phno.setText(rs.getString(4));
 		
 			rs.close();
